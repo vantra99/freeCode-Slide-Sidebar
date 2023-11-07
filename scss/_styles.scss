@@ -1,0 +1,135 @@
+*,
+::before,
+:after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+h1 {
+  color: aqua;
+}
+
+.container {
+  width: calc(100vw - 200px);
+  margin: 0 100px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.group-slide {
+  margin-left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  border-radius: 30px;
+  display: flex;
+  overflow: hidden;
+  .slide-item {
+    transition: 0.5s linear;
+    img {
+      width: 800px;
+      height: 400px;
+    }
+  }
+}
+.group-btn {
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+  padding: 20px 0;
+  .circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 99px;
+    border: 2px solid #000;
+  }
+}
+
+$list: (
+  1: 0px,
+  2: -800px,
+  3: -1600px,
+);
+@each $number, $tranlate-X in $list {
+  @for $i from 1 through 3 {
+    .input-select:nth-of-type(#{$number}):checked
+      ~ .group-slide
+      .slide-item:nth-of-type(#{$i}) {
+      transform: translateX($tranlate-X);
+    }
+  }
+  .input-select:nth-of-type(#{$number}):checked
+    ~ .group-btn
+    .btn-active:nth-child(#{$number})
+    .circle {
+    background-color: #000;
+  }
+}
+
+.group-sidebar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: inline-block;
+  position: relative;
+
+  .group-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20px;
+    width: 350px;
+    height: 100px;
+    border-radius: 99px;
+    background-color: rgba(122, 122, 255, 0.5);
+  }
+  .label-icon {
+    &:hover {
+      cursor: pointer;
+    }
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+  .label-translate {
+    display: block;
+    width: 50px;
+    height: 5px;
+    border-radius: 99px;
+    position: absolute;
+    bottom: 15px;
+    left: 45px;
+    background-color: #fff;
+    transition: 0.5s linear;
+  }
+}
+$list-bar: (
+  1: 0px,
+  2: 70px,
+  3: 140px,
+  4: 210px,
+);
+@each $number-item, $number-lenght in $list-bar {
+  .input-bar:nth-of-type(#{$number-item}):checked ~ .label-translate {
+    transform: translateX($number-lenght);
+  }
+}

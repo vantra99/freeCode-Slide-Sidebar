@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slider</title>
+    <link rel="stylesheet" href="./assets/css/main.css" />
+  </head>
+  <body>
+    <div class="container">
+      <input
+        type="radio"
+        name="select"
+        id="action1"
+        class="input-select"
+        hidden
+        checked
+      />
+      <input
+        type="radio"
+        name="select"
+        id="action2"
+        class="input-select"
+        hidden
+      />
+      <input
+        type="radio"
+        name="select"
+        id="action3"
+        class="input-select"
+        hidden
+      />
+      <div class="group-slide">
+        <label for="action1" class="slide-item">
+          <img src="./assets/img/slide-01.jpg" alt="" />
+        </label>
+
+        <label for="action2" class="slide-item">
+          <img src="./assets/img/slide-02.jpg" alt="" />
+        </label>
+
+        <label for="action3" class="slide-item">
+          <img src="./assets/img/slide-03.jpg" alt="" />
+        </label>
+      </div>
+      <div class="group-btn">
+        <label class="btn-active active" for="action1">
+          <div class="circle"></div>
+        </label>
+        <label class="btn-active" for="action2">
+          <div class="circle"></div>
+        </label>
+        <label class="btn-active" for="action3">
+          <div class="circle"></div>
+        </label>
+      </div>
+      <div class="group-sidebar">
+        <input
+          type="radio"
+          name="sidebar"
+          id="sidebar1"
+          class="input-bar"
+          hidden
+        />
+        <input
+          type="radio"
+          name="sidebar"
+          id="sidebar2"
+          class="input-bar"
+          hidden
+          checked
+        />
+        <input
+          type="radio"
+          name="sidebar"
+          id="sidebar3"
+          class="input-bar"
+          hidden
+        />
+        <input
+          type="radio"
+          name="sidebar"
+          id="sidebar4"
+          class="input-bar"
+          hidden
+        />
+        <label for="sidebar" class="label-translate"></label>
+        <div class="group-icon">
+          <label for="sidebar1" class="label-icon">
+            <img src="./assets/img/icon-add.svg" alt="" />
+          </label>
+          <label for="sidebar2" class="label-icon">
+            <img src="./assets/img/icon-heart.svg" alt="" />
+          </label>
+          <label for="sidebar3" class="label-icon">
+            <img src="./assets/img/icon-home.svg" alt="" />
+          </label>
+          <label for="sidebar4" class="label-icon">
+            <img src="./assets/img/icon-picture.svg" alt="" />
+          </label>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
