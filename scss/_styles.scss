@@ -13,6 +13,7 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 input,
@@ -132,4 +133,188 @@ $list-bar: (
   .input-bar:nth-of-type(#{$number-item}):checked ~ .label-translate {
     transform: translateX($number-lenght);
   }
+}
+
+.group-star {
+  margin-top: 50px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 90px;
+  background-color: rgba(0, 242, 255, 0.5);
+  border-radius: 20px;
+  padding: 10px;
+  p {
+    font-size: 2rem;
+    font-weight: 600;
+    padding-bottom: 10px;
+  }
+  .label-star {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    svg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+@for $x from 1 through 5 {
+  @for $y from 1 through $x {
+    .input-star:nth-of-type(#{$x}):checked
+      ~ .label-star:nth-of-type(#{$y})
+      svg {
+      color: yellow;
+    }
+  }
+}
+
+.group-popup {
+  margin-top: 50px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  .label-popup {
+    display: grid;
+    grid-template-columns: 600px 200px;
+    grid-template-rows: 100px 5px;
+  }
+  .label-text {
+    .popup-heading {
+      color: #080415;
+      font-size: 3.2rem;
+      font-weight: 500;
+      line-height: 1.25;
+      letter-spacing: -0.128rem;
+      transition: 0.5s linear;
+    }
+    .popup-desc {
+      width: 487px;
+      height: 57px;
+      color: #51586a;
+      font-size: 1.8rem;
+      font-weight: 400;
+      line-height: 1.67;
+      visibility: hidden;
+      opacity: 0;
+      transform-origin: top;
+      transform: scaleY(0.4);
+      transition: 0.5s linear;
+    }
+  }
+  .label-icon {
+    margin-left: auto;
+    position: relative;
+    &:hover {
+      cursor: pointer;
+    }
+    svg {
+      &:first-child {
+        visibility: hidden;
+      }
+      &:last-child,
+      &:first-child {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+    }
+  }
+  .popup-line {
+    grid-column: 1 / span 2;
+    width: 800px;
+    height: 1px;
+    background-color: #000;
+    transform: translateY(-40px);
+    transition: 0.5s linear;
+  }
+}
+
+.input-popup:checked ~ .label-popup .popup-heading {
+  color: #5d3bee;
+}
+
+.input-popup:checked ~ .label-popup .popup-desc {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+}
+.input-popup:checked ~ .label-popup .popup-line {
+  transform: translateY(0px);
+}
+.input-popup:checked ~ .label-popup svg:first-child {
+  visibility: visible;
+}
+.input-popup:checked ~ .label-popup svg:last-child {
+  visibility: hidden;
+}
+
+.group-eye {
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h2 {
+    font-size: 5rem;
+    font-weight: 600;
+    color: rgb(7, 115, 115);
+    padding-bottom: 20px;
+  }
+  .content {
+    position: relative;
+    width: 400px;
+    height: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+    .picture {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .group-overplay {
+    padding-top: 40%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.25s linear;
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+    p {
+      font-size: 2rem;
+      padding: 10px 20px;
+    }
+  }
+  .label-action {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #999;
+    border-radius: 99px;
+    color: #111;
+    font-size: 1.8rem;
+    line-height: 1;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.input-eye:checked ~ .content .group-overplay {
+  visibility: visible;
+  opacity: 1;
 }
